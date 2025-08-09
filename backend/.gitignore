@@ -1,0 +1,34 @@
+# Node modules (toujours exclure)
+node_modules/
+
+# Dossier de build (TS compilé)
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Variables d'environnement (clés, mots de passe)
+.env
+.env.local
+.env.*.local
+
+# Cache de l'IDE et OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Cache des outils
+.cache/
+.vite/
+.next/
+
+# Coverage (tests)
+coverage/
+
+# Optional: fichiers temporaires ou backup
+*.bak
+*.tmp
