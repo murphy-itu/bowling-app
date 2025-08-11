@@ -17,10 +17,7 @@ export const addNewPoint = (req: Request, res: Response) => {
 
         game.addNewPoint(point);
 
-        return res.json({
-            message: 'Point ajouté avec succès',
-            totalActuel: game.scoreFinal
-        });
+        return res.json(game);
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: (error as Error).message });
@@ -30,7 +27,9 @@ export const addNewPoint = (req: Request, res: Response) => {
 export const restartGame = (req: Request, res: Response) => {
     game = new Game();
 
-    return res.json({
-        message: "Nouvelle partie lancée"
-    });
+    return res.json(game);
+}
+
+export const getGame = (req: Request, res: Response) => {
+    return res.json(game);
 }

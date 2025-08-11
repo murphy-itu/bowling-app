@@ -3,9 +3,11 @@ import Lancer from "./Lancer.model.ts";
 export default class Frame {
     lancers: Lancer[] = [];
     totalActuel: number;
+    totalAAfficher: number;
 
     constructor() {
         this.totalActuel = 0;
+        this.totalAAfficher = 0;
 
         for (let i = 0; i < 3; i++) {
             this.addLancer(new Lancer());
@@ -33,12 +35,12 @@ export default class Frame {
 
         this.lancers.forEach((lancer, index) => {
             if (isSupp) {
-                res += lancer.point.toString();
+                res +=  lancer.point !== null ? lancer.point.toString() : "";
             } else {
                 if (lancer.point == 15) {
                     res += (index === 0) ? "X" : "/";
                 } else {
-                    res += lancer.point.toString();
+                    res += lancer.point !== null ? lancer.point.toString() : "";
                 }
             }
 

@@ -44,6 +44,19 @@ export default class Game {
     }
 
     removeAllBonusLancerWithNbrLancerZero () {
+        const zeroLancer: BonusLancer = this.bonusLancers.find(
+            bonusLancer => bonusLancer.nbrLancer === 0
+        );
+
+        if (zeroLancer !== undefined) {
+            if (zeroLancer.indiceFrame == 0) {
+                this.frames[zeroLancer.indiceFrame].totalAAfficher = this.frames[zeroLancer.indiceFrame].totalActuel; 
+            } else {
+                this.frames[zeroLancer.indiceFrame].totalAAfficher = this.frames[zeroLancer.indiceFrame-1].totalAAfficher + this.frames[zeroLancer.indiceFrame].totalActuel;    
+            }
+            this.scoreFinal = this.frames[zeroLancer.indiceFrame].totalAAfficher;
+        }
+
         this.bonusLancers = this.bonusLancers.filter(bonusLancer => bonusLancer.nbrLancer !== 0);          
     }
 
@@ -63,6 +76,7 @@ export default class Game {
 
             let actualFrame: Frame = this.frames[this.indiceActualFrame]!;
             let actualLancer: Lancer = actualFrame.lancers[this.indiceActualLancer]!;
+            let copyIndiceActualFrame = this.indiceActualFrame;
 
             const sommeLancersAvant = actualFrame.lancers.slice(0, this.indiceActualLancer).reduce((acc: number, lancer: Lancer) => acc + lancer.point, 0);
 
@@ -96,7 +110,16 @@ export default class Game {
             }
     
             this.removeAllBonusLancerWithNbrLancerZero();
-            this.setFinalScoreFromThrowPoints();
+            if (this.indiceActualFrame != copyIndiceActualFrame)  {
+                if (!this.bonusLancers.some(bonusLancer => bonusLancer.indiceFrame === copyIndiceActualFrame)) {
+                    if (copyIndiceActualFrame == 0) {
+                        this.frames[copyIndiceActualFrame].totalAAfficher = this.frames[copyIndiceActualFrame].totalActuel; 
+                    } else {
+                        this.frames[copyIndiceActualFrame].totalAAfficher = this.frames[copyIndiceActualFrame-1].totalAAfficher + this.frames[copyIndiceActualFrame].totalActuel;    
+                    }
+                    this.scoreFinal = this.frames[copyIndiceActualFrame].totalAAfficher;
+                }
+            }
 
             console.log(this.toString());
             console.log("totalScore :", this.scoreFinal);
@@ -106,6 +129,7 @@ export default class Game {
     
             if (this.indiceActualFrame >= 5 && this.bonusLancers.length == 0) {
                 this.isFinished = true;
+                this.setFinalScoreFromThrowPoints();
             }
 
         } else {
