@@ -74,6 +74,8 @@ The logic for functions such as addNewPoint is in **Game.model.ts**
 ## Web interface
 > The game is only available for a laptop web interface, which is not yet responsive for tablets or mobile devices.
 
+**Url**: http://localhost:5173/
+
 ## Author 
 TSIROFOZAFY Tsihoarana Rolph Nicolatimurphy  
 murphytsirofozafy@gmail.com
