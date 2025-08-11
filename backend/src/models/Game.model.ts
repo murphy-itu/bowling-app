@@ -80,12 +80,12 @@ export default class Game {
 
             const sommeLancersAvant = actualFrame.lancers.slice(0, this.indiceActualLancer).reduce((acc: number, lancer: Lancer) => acc + lancer.point, 0);
 
-            const pointToAdd = (point === 15 && this.indiceActualLancer > 0) ? 15 - sommeLancersAvant : point;
+            const pointToAdd = (point === 15 && this.indiceActualLancer > 0 && this.indiceActualFrame < 5) ? 15 - sommeLancersAvant : point;
     
             actualLancer.point = point;
             actualFrame.totalActuel += (this.indiceActualFrame < 5) ? pointToAdd : 0; 
     
-            this.addPointToFrameInBonusLancer(point);
+            this.addPointToFrameInBonusLancer(pointToAdd);
     
             if (point == 15) {
     

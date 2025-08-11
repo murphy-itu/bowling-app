@@ -20,16 +20,21 @@ function App() {
   }, []);
 
   const onSubmitScore = async (score: number) => {
-    let differenceScore: number = maxScoreActuel - score;
+    const differenceScore: number = maxScoreActuel - score;
 
     if (score === maxScoreActuel) {
-      if (game?.indiceActualFrame! <= 4) {
-        (maxScoreActuel === 15)
-          ? triggerBonus("strike")
-          : triggerBonus("spare");
-      } else {
-        setBonusType(null);
+      if (game?.indiceActualFrame !== undefined) {
+        if (game?.indiceActualFrame <= 4) {
+          if (maxScoreActuel === 15) {
+            triggerBonus("strike")
+          } else {
+            triggerBonus("spare");
+          }
+        } else {
+          setBonusType(null);
+        }
       }
+      
     }
 
 
