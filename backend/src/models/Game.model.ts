@@ -1,6 +1,6 @@
-import BonusLancer from "./BonusLancer.model.ts";
-import Frame from "./Frame.model.ts";
-import Lancer from "./Lancer.model.ts";
+import BonusLancer from "./BonusLancer.model.js";
+import Frame from "./Frame.model.js";
+import Lancer from "./Lancer.model.js";
 
 export default class Game {
     indiceActualFrame: number;
