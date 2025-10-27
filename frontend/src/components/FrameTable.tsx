@@ -11,7 +11,7 @@ const FrameTable: React.FC<Props> = ({ game }) => {
             <thead>
                 <tr className="bg-gray-300">
                     <th className="border border-gray-400 px-2 py-1">Frame</th>
-                    {game.frames?.map((index) => (
+                    {game.frames?.map((_, index) => (
                         <th key={index} className={`border border-gray-400 px-2 py-1 ${(!game.isFinished && index == game.indiceActualFrame) ? "bg-light-green" : ""}`}>
                             {(index != 5) ? index + 1 : "Bonus"}
                         </th>
