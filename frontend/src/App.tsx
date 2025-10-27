@@ -10,7 +10,7 @@ function App() {
 
   const [game, setGame] = useState<Game | null>(null);
   const [maxScoreActuel, setMaxScoreActuel] = useState<number>(15);
-  let copyactualFrame: number = game?.indiceActualFrame;
+  let copyactualFrame: number = game?.indiceActualFrame ?? 0;
   const [bonusType, setBonusType] = useState<"strike" | "spare" | null>(null);
 
   useEffect(() => {
