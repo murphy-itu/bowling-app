@@ -1,4 +1,4 @@
-import Lancer from "./Lancer.model.ts";
+import Lancer from "./Lancer.model";
 
 export default class Frame {
     lancers: Lancer[] = [];

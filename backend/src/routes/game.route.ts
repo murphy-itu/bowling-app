@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { restartGame, addNewPoint, getGame  } from "../controllers/game.controller.ts";
+import { restartGame, addNewPoint, getGame  } from "../controllers/game.controller";
 
 const gameRouter = Router();
 
