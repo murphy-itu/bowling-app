@@ -1,5 +1,5 @@
 import express from 'express'
-import gameRouter from './routes/game.route'
+import gameRouter from './routes/game.route.ts'
 import cors from 'cors'
 
 const app = express()

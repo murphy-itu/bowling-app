@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import Game from '../models/Game.model';
+import Game from '../models/Game.model.ts';
 
 let game = new Game();
 
