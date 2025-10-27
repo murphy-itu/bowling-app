@@ -15,7 +15,10 @@ app.use(express.json());
 
 app.use("/game", gameRouter);
 
+export default app;
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`)
-})
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`App listening on port ${port}`)
+  })
+}
